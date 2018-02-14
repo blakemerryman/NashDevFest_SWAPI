@@ -44,7 +44,14 @@ class SWCharacterViewController: UIViewController, SWCharacterDataSourceDelegate
   lazy var addButton: UIBarButtonItem = {
     let button = UIBarButtonItem(barButtonSystemItem: .add,
                                  target: self,
-                                 action: #selector(didTapButton(_:)))
+                                 action: #selector(didTapAddButton(_:)))
+    return button
+  }()
+
+  lazy var resetButton: UIBarButtonItem = {
+    let button = UIBarButtonItem(barButtonSystemItem: .trash,
+                                 target: self,
+                                 action: #selector(didTapResetButton(_:)))
     return button
   }()
 
@@ -59,17 +66,23 @@ class SWCharacterViewController: UIViewController, SWCharacterDataSourceDelegate
     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
     navigationItem.rightBarButtonItem = addButton
+    navigationItem.leftBarButtonItem = resetButton
 
     dataSource.delegate = self
   }
 
-  func didTapButton(_ sender: UIBarButtonItem) {
+  func didTapAddButton(_ sender: UIBarButtonItem) {
     dataSource.loadNext()
+  }
+
+  func didTapResetButton(_ sender: UIBarButtonItem) {
+    dataSource.reset()
   }
 
   func didUpdate(dataSource: SWCharacterDataSource) {
     tableView.reloadData()
   }
+
 }
 
 /*:

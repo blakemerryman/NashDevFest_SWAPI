@@ -78,4 +78,11 @@ class SWCharacterDataSource: StarWarsInterface {
     }
   }
 
+  func reset() {
+    requesting = false
+    characters.removeAll()
+    _ = SWDataController.deleteAllCharacters()
+    delegate?.didUpdate(dataSource: self)
+  }
+
 }

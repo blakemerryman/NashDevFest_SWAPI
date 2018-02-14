@@ -81,6 +81,35 @@ class SWDataController {
     return characters
   }
 
+  class func delete(character: SWCharacter) -> Bool {
+
+    let characterPath = documentsDirectory.appending("/\(character.name).character")
+    let characterURL = URL(fileURLWithPath: characterPath)
+
+    do {
+      try FileManager.default.removeItem(at: characterURL)
+      return true
+    }
+    catch {
+      return false
+    }
+  }
+
+  class func deleteAllCharacters() -> Bool {
+    let allCharacters = loadAllCharacters()
+
+    var allDeleted = true
+
+    for character in allCharacters {
+      let deleted = delete(character: character)
+      if !deleted {
+        allDeleted = false
+      }
+    }
+
+    return allDeleted
+  }
+
 }
 
 fileprivate extension JSONDecoder {
