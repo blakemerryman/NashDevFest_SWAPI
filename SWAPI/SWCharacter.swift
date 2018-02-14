@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*:
+/**
  # A Simple Data Model with Persistence Support
 
  ```
@@ -17,12 +17,12 @@ import Foundation
    created = "2014-12-09T13:50:51.644000Z";
    edited = "2014-12-20T21:17:56.891000Z";
    "eye_color" = blue;
-   films =         (
-   "http://swapi.co/api/films/6/",
-   "http://swapi.co/api/films/3/",
-   "http://swapi.co/api/films/2/",
-   "http://swapi.co/api/films/1/",
-   "http://swapi.co/api/films/7/"
+   films = (
+     "http://swapi.co/api/films/6/",
+     "http://swapi.co/api/films/3/",
+     "http://swapi.co/api/films/2/",
+     "http://swapi.co/api/films/1/",
+     "http://swapi.co/api/films/7/"
    );
    gender = male;
    "hair_color" = blond;
@@ -31,17 +31,17 @@ import Foundation
    mass = 77;
    name = "Luke Skywalker";
    "skin_color" = fair;
-   species =         (
-   "http://swapi.co/api/species/1/"
+   species = (
+     "http://swapi.co/api/species/1/"
    );
-   starships =         (
-   "http://swapi.co/api/starships/12/",
-   "http://swapi.co/api/starships/22/"
+   starships = (
+     "http://swapi.co/api/starships/12/",
+     "http://swapi.co/api/starships/22/"
    );
    url = "http://swapi.co/api/people/1/";
-   vehicles =         (
-   "http://swapi.co/api/vehicles/14/",
-   "http://swapi.co/api/vehicles/30/"
+   vehicles = (
+     "http://swapi.co/api/vehicles/14/",
+     "http://swapi.co/api/vehicles/30/"
    );
  }
  ```

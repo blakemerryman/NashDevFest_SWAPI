@@ -17,6 +17,7 @@
 		4691E11E1E3CF72B00238F9D /* SWCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1181E3CF72B00238F9D /* SWCharacterDataSource.swift */; };
 		4691E11F1E3CF72B00238F9D /* SWDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1191E3CF72B00238F9D /* SWDataController.swift */; };
 		4691E1201E3CF72B00238F9D /* SWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E11A1E3CF72B00238F9D /* SWViewController.swift */; };
+		46B93E892034D59C003DC5C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 46B93E882034D59C003DC5C3 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4691E1181E3CF72B00238F9D /* SWCharacterDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SWCharacterDataSource.swift; sourceTree = "<group>"; tabWidth = 2; };
 		4691E1191E3CF72B00238F9D /* SWDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWDataController.swift; sourceTree = "<group>"; };
 		4691E11A1E3CF72B00238F9D /* SWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWViewController.swift; sourceTree = "<group>"; };
+		46B93E882034D59C003DC5C3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 		4691E0F61E3CF6FE00238F9D = {
 			isa = PBXGroup;
 			children = (
+				46B93E882034D59C003DC5C3 /* README.md */,
 				4691E1011E3CF6FE00238F9D /* SWAPI */,
 				4691E1001E3CF6FE00238F9D /* Products */,
 			);
@@ -151,6 +154,7 @@
 			files = (
 				4691E10D1E3CF6FE00238F9D /* LaunchScreen.storyboard in Resources */,
 				4691E10A1E3CF6FE00238F9D /* Assets.xcassets in Resources */,
+				46B93E892034D59C003DC5C3 /* README.md in Resources */,
 				4691E1081E3CF6FE00238F9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
