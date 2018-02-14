@@ -1,5 +1,5 @@
 //
-//  SWViewController.swift
+//  SWCharacterViewController.swift
 //  SWAPI
 //
 //  Created by Blake Merryman on 1/28/17.
@@ -7,6 +7,16 @@
 //
 
 import UIKit
+
+/*:
+ The View Controller Delegate
+
+ - Delegates the responsibility for handling a selected character (e.g. displaying a view).
+
+ */
+protocol SWCharacterViewControllerDelegate: class {
+  func didSelect(_ character: SWCharacter, from viewController: SWCharacterViewController)
+}
 
 /*:
  # The View Controller
@@ -18,6 +28,7 @@ import UIKit
  */
 class SWCharacterViewController: UIViewController, SWCharacterDataSourceDelegate {
 
+  weak var delegate: SWCharacterViewControllerDelegate?
   let dataSource = SWCharacterDataSource()
 
   lazy var tableView: UITableView = {
@@ -64,12 +75,18 @@ class SWCharacterViewController: UIViewController, SWCharacterDataSourceDelegate
 /*:
  # Conforming to UITableViewDelegate && UITableViewDataSource
 
- ## - UITableViewDelegate: provides general functionality handling (unimplemented)
+ ## - UITableViewDelegate: provides general functionality handling
 
  ## - UITableViewDataSource: provides the information & data we need to display things on screen
 
  */
 extension SWCharacterViewController: UITableViewDelegate {
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let character = dataSource.characters[indexPath.row]
+    delegate?.didSelect(character, from: self)
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
 
 }
 

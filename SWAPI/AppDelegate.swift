@@ -21,8 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   /// Helper function that sets up the root view controller inside of a navigation controller.
   private func setupRootViewController() {
-    let rootViewController = SWCharacterViewController()
-    window?.rootViewController = UINavigationController(rootViewController: rootViewController)
+    let characterViewController = SWCharacterViewController()
+    characterViewController.title = "SWAPI"
+    characterViewController.delegate = self
+    window?.rootViewController = UINavigationController(rootViewController: characterViewController)
     window?.makeKeyAndVisible()
   }
 
@@ -43,6 +45,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().isTranslucent = false
     UILabel.appearance().font = UIFont.preferredFont(forTextStyle: .title1)
     UILabel.appearance().textColor = .white
+  }
+
+}
+
+extension AppDelegate: SWCharacterViewControllerDelegate {
+
+  func didSelect(_ character: SWCharacter, from viewController: SWCharacterViewController) {
+
+    guard let navigationController = window?.rootViewController as? UINavigationController else {
+      return // abort b/c we require a nav controller
+    }
+
+    let characterDetailsVC = SWCharacterDetailViewController(character: character)
+    navigationController.pushViewController(characterDetailsVC, animated: true)
   }
 
 }

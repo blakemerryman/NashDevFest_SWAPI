@@ -16,8 +16,9 @@
 		4691E11D1E3CF72B00238F9D /* SWCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1171E3CF72B00238F9D /* SWCharacter.swift */; };
 		4691E11E1E3CF72B00238F9D /* SWCharacterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1181E3CF72B00238F9D /* SWCharacterDataSource.swift */; };
 		4691E11F1E3CF72B00238F9D /* SWDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1191E3CF72B00238F9D /* SWDataController.swift */; };
-		4691E1201E3CF72B00238F9D /* SWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E11A1E3CF72B00238F9D /* SWViewController.swift */; };
+		4691E1201E3CF72B00238F9D /* SWCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E11A1E3CF72B00238F9D /* SWCharacterViewController.swift */; };
 		46B93E892034D59C003DC5C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 46B93E882034D59C003DC5C3 /* README.md */; };
+		46B93E8B2034DA91003DC5C3 /* SWCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B93E8A2034DA91003DC5C3 /* SWCharacterDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +33,9 @@
 		4691E1171E3CF72B00238F9D /* SWCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCharacter.swift; sourceTree = "<group>"; };
 		4691E1181E3CF72B00238F9D /* SWCharacterDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SWCharacterDataSource.swift; sourceTree = "<group>"; tabWidth = 2; };
 		4691E1191E3CF72B00238F9D /* SWDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWDataController.swift; sourceTree = "<group>"; };
-		4691E11A1E3CF72B00238F9D /* SWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWViewController.swift; sourceTree = "<group>"; };
+		4691E11A1E3CF72B00238F9D /* SWCharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCharacterViewController.swift; sourceTree = "<group>"; };
 		46B93E882034D59C003DC5C3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		46B93E8A2034DA91003DC5C3 /* SWCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,8 @@
 				4691E1171E3CF72B00238F9D /* SWCharacter.swift */,
 				4691E1181E3CF72B00238F9D /* SWCharacterDataSource.swift */,
 				4691E1191E3CF72B00238F9D /* SWDataController.swift */,
-				4691E11A1E3CF72B00238F9D /* SWViewController.swift */,
+				4691E11A1E3CF72B00238F9D /* SWCharacterViewController.swift */,
+				46B93E8A2034DA91003DC5C3 /* SWCharacterDetailViewController.swift */,
 				4691E1141E3CF71D00238F9D /* Supporting Files */,
 			);
 			path = SWAPI;
@@ -168,7 +171,8 @@
 			files = (
 				4691E11F1E3CF72B00238F9D /* SWDataController.swift in Sources */,
 				4691E11E1E3CF72B00238F9D /* SWCharacterDataSource.swift in Sources */,
-				4691E1201E3CF72B00238F9D /* SWViewController.swift in Sources */,
+				4691E1201E3CF72B00238F9D /* SWCharacterViewController.swift in Sources */,
+				46B93E8B2034DA91003DC5C3 /* SWCharacterDetailViewController.swift in Sources */,
 				4691E11D1E3CF72B00238F9D /* SWCharacter.swift in Sources */,
 				4691E11C1E3CF72B00238F9D /* NetworkInterface.swift in Sources */,
 				4691E1051E3CF6FE00238F9D /* ViewController.swift in Sources */,
