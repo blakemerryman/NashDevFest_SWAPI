@@ -33,6 +33,8 @@ class SWCharacterDataSource: StarWarsInterface {
   /*: Variable to store locally cached Characters. */
   private(set) var characters: [SWCharacter] = []
 
+  private var requesting: Bool = false
+
   /*: At initialization, we load up any Characters that are already on disk and prep index for next API call. */
   init() {
     characters = SWDataController.loadAllCharacters()
@@ -47,7 +49,16 @@ class SWCharacterDataSource: StarWarsInterface {
    - Notify the delegate that new data is available.
    */
   func loadNext() {
+
+    guard !requesting else {
+      return // abort! we're already making a request
+    }
+
+    requesting = true
+
     get("/people/\(nextAPICharacterIndex)") { data, response, error in
+
+      self.requesting = false
 
       guard let data = data else {
         return // TODO: awesome error handling here
