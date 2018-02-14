@@ -46,7 +46,7 @@ import Foundation
  }
  ```
  */
-class SWCharacter: NSObject, NSCoding {
+class SWCharacter: NSObject, Codable {
 
   let name: String
   let eyeColor: String
@@ -61,44 +61,7 @@ class SWCharacter: NSObject, NSCoding {
     super.init()
   }
 
-  /*: Convenience initializer used to create instance from JSON dictionary. */
-  convenience init?(fromJSON json: [String: AnyObject]) {
-    guard let name = json["name"] as? String,
-      let eyeColor = json["eye_color"] as? String,
-      let url = json["url"] as? String else {
-        return nil
-    }
-    self.init(name: name, eyeColor: eyeColor, url: url)
+  enum CodingKeys: String, CodingKey {
+    case name, eyeColor = "eye_color", url
   }
-
-
-  /*:
-   ## Conforming to `NSCoding` allows the model to supply it's own information for persistence.
-   ---
-
-   ### `init(code:)` allows model to provide info it needs to be initialized from disk.
-   Convenience initializer used by NSCoding to deserialize raw data on disk into an object.
-   Required if conforming to NSCoding.
-   */
-  required convenience init?(coder aDecoder: NSCoder) {
-    guard let storedName = aDecoder.decodeObject(forKey: "name") as? String,
-      let storedHome = aDecoder.decodeObject(forKey: "eye_color") as? String,
-      let storedURL  = aDecoder.decodeObject(forKey: "url") as? String else {
-        return nil
-    }
-
-    self.init(name: storedName, eyeColor: storedHome, url: storedURL)
-  }
-
-  /*:
-   ### `encode(with:)` allows model to provide info it needs to be written to disk.
-   Helper method used by NSCoding to serialize object into data for storing on disk.
-   Required if conforming to NSCoding.
-   */
-  func encode(with aCoder: NSCoder) {
-    aCoder.encode(self.name, forKey: "name")
-    aCoder.encode(self.eyeColor, forKey: "eye_color")
-    aCoder.encode(self.url, forKey: "url")
-  }
-
 }

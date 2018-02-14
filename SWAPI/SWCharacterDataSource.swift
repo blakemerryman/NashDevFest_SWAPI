@@ -48,9 +48,13 @@ class SWCharacterDataSource: StarWarsInterface {
    */
   func loadNext() {
     get("/people/\(nextAPICharacterIndex)") { data, response, error in
-      guard let characterJSON = JSONHelper.shared.decodeJSON(fromData: data),
-        let newCharacter = SWDataController.createCharacter(fromJSON: characterJSON) else  {
-          return
+
+      guard let data = data else {
+        return // TODO: awesome error handling here
+      }
+
+      guard let newCharacter = SWDataController.createCharacter(from: data) else {
+        return // TODO: awesome error handling here
       }
 
       if SWDataController.save(character: newCharacter) {

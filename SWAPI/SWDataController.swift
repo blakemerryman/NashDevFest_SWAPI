@@ -15,7 +15,7 @@ import Foundation
 
  - DataController handles reading-data-from and writing-data-to disk.
 
- - Wrapping `NSKeyedArchiver`/`NSKeyedUnarchiver` allows us to simplify the interface while ensuring proper model typing.
+ - Wrapping `Encodable`/`Decodable` allows us to simplify the interface while ensuring proper model typing.
 
  */
 class SWDataController {
@@ -28,23 +28,41 @@ class SWDataController {
   }()
 
   /*: Attempts to a create a character object. */
-  class func createCharacter(fromJSON json: [String: AnyObject]) -> SWCharacter? {
+  class func createCharacter(from data: Data) -> SWCharacter? {
 
-    return SWCharacter(fromJSON: json)
+    return try? JSONDecoder.shared.decode(SWCharacter.self, from: data)
   }
 
   /*: Attempts to save a character object to disk. */
   class func save(character: SWCharacter) -> Bool {
+
     let characterPath = documentsDirectory.appending("/\(character.name).character")
-    let success = NSKeyedArchiver.archiveRootObject(character, toFile: characterPath)
-    return success
+    let characterURL = URL(fileURLWithPath: characterPath)
+
+    guard let characterData = try? JSONEncoder.shared.encode(character) else {
+      return false // Encoding to data failed.
+    }
+
+    do {
+      try characterData.write(to: characterURL)
+      return true
+    }
+    catch {
+      return false
+    }
   }
 
   /*: Attempts to load a character using it's name (i.e. used as filename). */
   class func load(characterNamed: String) -> SWCharacter? {
+
     let characterPath = documentsDirectory.appending("/\(characterNamed).character")
-    let character = NSKeyedUnarchiver.unarchiveObject(withFile: characterPath)
-    return character as? SWCharacter
+    let characterURL = URL(fileURLWithPath: characterPath)
+
+    guard let possibleCharacterData = try? Data(contentsOf: characterURL) else {
+      return nil // No character data at the path.
+    }
+
+    return createCharacter(from: possibleCharacterData)
   }
 
   /*: Searches user's documents and attampts to load all characters already on disk. */
@@ -62,5 +80,25 @@ class SWDataController {
     }
     return characters
   }
+
+}
+
+fileprivate extension JSONDecoder {
+
+  /// A shared JSON decoder to allow for easy decoding strategy adjustments.
+  static let shared: JSONDecoder = {
+    let decoder = JSONDecoder()
+    return decoder
+  }()
+
+}
+
+fileprivate extension JSONEncoder {
+
+  /// A shared JSON encoder to allow for easy decoding strategy adjustments.
+  static let shared: JSONEncoder = {
+    let encoder = JSONEncoder()
+    return encoder
+  }()
 
 }
