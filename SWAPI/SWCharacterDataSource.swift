@@ -28,7 +28,9 @@ class SWCharacterDataSource: StarWarsInterface {
   var delegate: SWCharacterDataSourceDelegate?
 
   /*: Index that keeps track of next character to request from API. */
-  private var nextAPICharacterIndex = 0
+  private var nextAPICharacterIndex: Int {
+    return characters.count + 1
+  }
 
   /*: Variable to store locally cached Characters. */
   private(set) var characters: [SWCharacter] = []
@@ -38,7 +40,6 @@ class SWCharacterDataSource: StarWarsInterface {
   /*: At initialization, we load up any Characters that are already on disk and prep index for next API call. */
   init() {
     characters = SWDataController.loadAllCharacters()
-    nextAPICharacterIndex = characters.count + 1
   }
 
   /*:
@@ -70,7 +71,6 @@ class SWCharacterDataSource: StarWarsInterface {
 
       if SWDataController.save(character: newCharacter) {
         self.characters.append(newCharacter)
-        self.nextAPICharacterIndex += 1
         DispatchQueue.main.async {
           self.delegate?.didUpdate(dataSource: self)
         }
