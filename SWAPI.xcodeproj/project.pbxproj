@@ -53,7 +53,9 @@
 				4691E1011E3CF6FE00238F9D /* SWAPI */,
 				4691E1001E3CF6FE00238F9D /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		4691E1001E3CF6FE00238F9D /* Products */ = {
 			isa = PBXGroup;
@@ -67,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				4691E1021E3CF6FE00238F9D /* AppDelegate.swift */,
-				4691E1151E3CF72B00238F9D /* JSONEncoderDecoder.swift */,
 				4691E1161E3CF72B00238F9D /* NetworkInterface.swift */,
 				4691E1171E3CF72B00238F9D /* SWCharacter.swift */,
 				4691E1181E3CF72B00238F9D /* SWCharacterDataSource.swift */,
