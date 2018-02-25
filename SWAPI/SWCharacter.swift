@@ -48,20 +48,63 @@ import Foundation
  */
 class SWCharacter: NSObject, Codable {
 
-  let name: String
-  let eyeColor: String
   let url: String
+  let created: Date
+  let edited: Date
+
+  let name: String
+  let birthYear: String
+  let gender: String
+  let eyeColor: String
+  let hairColor: String
+  let skinColor: String
+  let height: String
+  let mass: String
+
   // Add more properties here as desired.
 
   /*: Designated initializer. */
-  init(name: String, eyeColor: String, url: String) {
-    self.name = name
-    self.eyeColor = eyeColor
+  init(url: String,
+       created: Date,
+       edited: Date,
+       name: String,
+       birthYear: String,
+       gender: String,
+       eyeColor: String,
+       hairColor: String,
+       skinColor: String,
+       height: String,
+       mass: String) {
+
     self.url = url
+    self.created = created
+    self.edited = edited
+    self.name = name
+    self.birthYear = birthYear
+    self.gender = gender
+    self.eyeColor = eyeColor
+    self.hairColor = hairColor
+    self.skinColor = skinColor
+    self.height = height
+    self.mass = mass
+
     super.init()
   }
 
+  // MARK: - Coding Keys
+  // We need this only so we can override the JSON key name.
   enum CodingKeys: String, CodingKey {
-    case name, eyeColor = "eye_color", url
+    case url
+    case created
+    case edited
+    case name
+    case birthYear = "birth_year"
+    case gender
+    case eyeColor = "eye_color"
+    case hairColor = "hair_color"
+    case skinColor = "skin_color"
+    case height
+    case mass
   }
+
 }
