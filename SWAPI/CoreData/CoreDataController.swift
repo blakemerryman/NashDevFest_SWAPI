@@ -62,7 +62,7 @@ final class CoreDataController {
     do {
       let characters = try managedObjectContext.fetch(fetchRequest)
         .map { $0.toSWCharacter() }
-        .flatMap { $0 }
+        .flatMap { $0 } // removes nil characters
 
       return characters
     }

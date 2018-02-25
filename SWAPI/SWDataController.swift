@@ -107,7 +107,7 @@ class SWDataController {
 //
 //}
 
-// MARK: - Private JSON Encoding/Decoding Helpers
+// MARK: - Private JSON Decoding Helpers
 
 fileprivate extension DateFormatter {
 
@@ -131,17 +131,6 @@ fileprivate extension JSONDecoder {
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .formatted(.iso8601Full)
     return decoder
-  }()
-
-}
-
-fileprivate extension JSONEncoder {
-
-  /// A shared JSON encoder to allow for easy decoding strategy adjustments.
-  static let shared: JSONEncoder = {
-    let encoder = JSONEncoder()
-    encoder.dateEncodingStrategy = .formatted(.iso8601Full)
-    return encoder
   }()
 
 }
