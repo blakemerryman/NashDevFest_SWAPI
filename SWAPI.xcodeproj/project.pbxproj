@@ -10,7 +10,6 @@
 		4691E1031E3CF6FE00238F9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1021E3CF6FE00238F9D /* AppDelegate.swift */; };
 		4691E1051E3CF6FE00238F9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1041E3CF6FE00238F9D /* ViewController.swift */; };
 		4691E1081E3CF6FE00238F9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4691E1061E3CF6FE00238F9D /* Main.storyboard */; };
-		4691E10A1E3CF6FE00238F9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4691E1091E3CF6FE00238F9D /* Assets.xcassets */; };
 		4691E10D1E3CF6FE00238F9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4691E10B1E3CF6FE00238F9D /* LaunchScreen.storyboard */; };
 		4691E11C1E3CF72B00238F9D /* NetworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1161E3CF72B00238F9D /* NetworkInterface.swift */; };
 		4691E11D1E3CF72B00238F9D /* SWCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E1171E3CF72B00238F9D /* SWCharacter.swift */; };
@@ -19,6 +18,7 @@
 		4691E1201E3CF72B00238F9D /* SWCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4691E11A1E3CF72B00238F9D /* SWCharacterViewController.swift */; };
 		46B93E892034D59C003DC5C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 46B93E882034D59C003DC5C3 /* README.md */; };
 		46B93E8B2034DA91003DC5C3 /* SWCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B93E8A2034DA91003DC5C3 /* SWCharacterDetailViewController.swift */; };
+		46B93E8F2034ED0A003DC5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46B93E8E2034ED0A003DC5C3 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,6 @@
 		4691E1021E3CF6FE00238F9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4691E1041E3CF6FE00238F9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4691E1071E3CF6FE00238F9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4691E1091E3CF6FE00238F9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4691E10C1E3CF6FE00238F9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4691E10E1E3CF6FE00238F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4691E1161E3CF72B00238F9D /* NetworkInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInterface.swift; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 		4691E11A1E3CF72B00238F9D /* SWCharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCharacterViewController.swift; sourceTree = "<group>"; };
 		46B93E882034D59C003DC5C3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		46B93E8A2034DA91003DC5C3 /* SWCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWCharacterDetailViewController.swift; sourceTree = "<group>"; };
+		46B93E8E2034ED0A003DC5C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +86,9 @@
 		4691E1141E3CF71D00238F9D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				46B93E8E2034ED0A003DC5C3 /* Assets.xcassets */,
 				4691E1041E3CF6FE00238F9D /* ViewController.swift */,
 				4691E1061E3CF6FE00238F9D /* Main.storyboard */,
-				4691E1091E3CF6FE00238F9D /* Assets.xcassets */,
 				4691E10B1E3CF6FE00238F9D /* LaunchScreen.storyboard */,
 				4691E10E1E3CF6FE00238F9D /* Info.plist */,
 			);
@@ -156,8 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4691E10D1E3CF6FE00238F9D /* LaunchScreen.storyboard in Resources */,
-				4691E10A1E3CF6FE00238F9D /* Assets.xcassets in Resources */,
 				46B93E892034D59C003DC5C3 /* README.md in Resources */,
+				46B93E8F2034ED0A003DC5C3 /* Assets.xcassets in Resources */,
 				4691E1081E3CF6FE00238F9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +301,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X2GDHXTJ3U;
 				INFOPLIST_FILE = SWAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blakemerryman.SWAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -314,6 +315,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = X2GDHXTJ3U;
 				INFOPLIST_FILE = SWAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blakemerryman.SWAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
