@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 /*:
  # A Simple Data Controller
@@ -20,97 +21,91 @@ import Foundation
  */
 class SWDataController {
 
-  /*: Private path to user's documents directory. */
-  private static let documentsDirectory: String = {
-    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-    let documentDirectory = paths[0] as String
-    return documentDirectory
-  }()
+  private static let coreDataController = CoreDataController(modelName: "Model")
 
   /*: Attempts to a create a character object. */
   class func createCharacter(from data: Data) -> SWCharacter? {
 
     return try? JSONDecoder.shared.decode(SWCharacter.self, from: data)
+
   }
 
   /*: Attempts to save a character object to disk. */
   class func save(character: SWCharacter) -> Bool {
 
-    let characterPath = documentsDirectory.appending("/\(character.name).character")
-    let characterURL = URL(fileURLWithPath: characterPath)
+    return coreDataController.save(character)
 
-    guard let characterData = try? JSONEncoder.shared.encode(character) else {
-      return false // Encoding to data failed.
-    }
-
-    do {
-      try characterData.write(to: characterURL)
-      return true
-    }
-    catch {
-      return false
-    }
   }
 
   /*: Attempts to load a character using it's name (i.e. used as filename). */
   class func load(characterNamed: String) -> SWCharacter? {
 
-    let characterPath = documentsDirectory.appending("/\(characterNamed).character")
-    let characterURL = URL(fileURLWithPath: characterPath)
+    return coreDataController.load(characterNamed: characterNamed)
 
-    guard let possibleCharacterData = try? Data(contentsOf: characterURL) else {
-      return nil // No character data at the path.
-    }
-
-    return createCharacter(from: possibleCharacterData)
   }
 
   /*: Searches user's documents and attampts to load all characters already on disk. */
   class func loadAllCharacters() -> [SWCharacter] {
-    var characters = [SWCharacter]()
-    do {
-      let directoryContents = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory)
-      let characterFiles = directoryContents.filter{ $0.hasSuffix(".character") }
-      let characterNames = characterFiles.flatMap { $0.components(separatedBy: ".").first } //
-      let loadedCharacters = characterNames.flatMap { load(characterNamed: $0) }
-      characters = loadedCharacters
-    }
-    catch {
-      return [] // just return empty if we catch an error.
-    }
-    return characters
+
+    return coreDataController.loadAllCharacters()
+
   }
 
   class func delete(character: SWCharacter) -> Bool {
 
-    let characterPath = documentsDirectory.appending("/\(character.name).character")
-    let characterURL = URL(fileURLWithPath: characterPath)
+    return coreDataController.delete(character: character)
 
-    do {
-      try FileManager.default.removeItem(at: characterURL)
-      return true
-    }
-    catch {
-      return false
-    }
   }
 
   class func deleteAllCharacters() -> Bool {
-    let allCharacters = loadAllCharacters()
 
-    var allDeleted = true
+    return coreDataController.deleteAllCharacters()
 
-    for character in allCharacters {
-      let deleted = delete(character: character)
-      if !deleted {
-        allDeleted = false
-      }
-    }
-
-    return allDeleted
   }
 
 }
+
+//// MARK: - Migration Code
+
+// TODO: figure migration out later
+// - need to de-dupe or only perform migration once.
+
+//private extension SWDataController {
+//
+//  /*: Private path to user's documents directory. */
+//  private static let documentsDirectory: String = {
+//    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+//    let documentDirectory = paths[0] as String
+//    return documentDirectory
+//  }()
+//
+//  class func loadAllCharactersFromLegacyStorage() -> [SWCharacter] {
+//    var characters = [SWCharacter]()
+//    do {
+//      let directoryContents = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory)
+//      let characterFiles = directoryContents.filter{ $0.hasSuffix(".character") }
+//      let characterNames = characterFiles.flatMap { $0.components(separatedBy: ".").first } //
+//      let loadedCharacters = characterNames.flatMap { load(characterNamed: $0) }
+//      characters = loadedCharacters
+//    }
+//    catch {
+//      return [] // just return empty if we catch an error.
+//    }
+//    return characters
+//  }
+//
+//  class func migrateCharactersFromLegacyStorage() -> Bool {
+//    let characters = loadAllCharactersFromLegacyStorage()
+//    var success = true
+//    for character in characters {
+//      if !save(character: character) {
+//        success = false
+//      }
+//    }
+//    return success
+//  }
+//
+//}
 
 // MARK: - Private JSON Encoding/Decoding Helpers
 

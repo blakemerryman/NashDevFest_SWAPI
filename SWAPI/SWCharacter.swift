@@ -46,12 +46,11 @@ import Foundation
  }
  ```
  */
-class SWCharacter: NSObject, Codable {
+struct SWCharacter: Codable {
 
-  let url: String
+  let url: URL
   let created: Date
   let edited: Date
-
   let name: String
   let birthYear: String
   let gender: String
@@ -62,34 +61,6 @@ class SWCharacter: NSObject, Codable {
   let mass: String
 
   // Add more properties here as desired.
-
-  /*: Designated initializer. */
-  init(url: String,
-       created: Date,
-       edited: Date,
-       name: String,
-       birthYear: String,
-       gender: String,
-       eyeColor: String,
-       hairColor: String,
-       skinColor: String,
-       height: String,
-       mass: String) {
-
-    self.url = url
-    self.created = created
-    self.edited = edited
-    self.name = name
-    self.birthYear = birthYear
-    self.gender = gender
-    self.eyeColor = eyeColor
-    self.hairColor = hairColor
-    self.skinColor = skinColor
-    self.height = height
-    self.mass = mass
-
-    super.init()
-  }
 
   // MARK: - Coding Keys
   // We need this only so we can override the JSON key name.
@@ -113,7 +84,7 @@ class SWCharacter: NSObject, Codable {
 extension SWCharacter {
   var details: [(key: String, value: String)] {
     return [
-      ("url", url),
+      ("url", url.absoluteString),
       ("created", created.description),
       ("edited", edited.description),
       ("name", name),
