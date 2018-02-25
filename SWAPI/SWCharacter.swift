@@ -108,3 +108,22 @@ class SWCharacter: NSObject, Codable {
   }
 
 }
+
+// MARK: - Details
+extension SWCharacter {
+  var details: [(key: String, value: String)] {
+    return [
+      ("url", url),
+      ("created", created.description),
+      ("edited", edited.description),
+      ("name", name),
+      ("birthYear", birthYear),
+      ("gender", gender),
+      ("eyeColor", eyeColor),
+      ("hairColor", hairColor),
+      ("skinColor", skinColor),
+      ("height", height),
+      ("mass", mass)
+    ]
+  }
+}

@@ -12,22 +12,14 @@ class SWCharacterDetailViewController: UIViewController {
 
   let character: SWCharacter
 
-  var details: [(key: String, value: String)] {
-    return [
-      ("name", character.name),
-      ("eye color", character.eyeColor),
-      ("url", character.url)
-    ]
-  }
-
   lazy var tableView: UITableView = {
     let tableView = UITableView()
     tableView.translatesAutoresizingMaskIntoConstraints = false
     tableView.delegate = self
     tableView.dataSource = self
     tableView.isUserInteractionEnabled = false
-    tableView.register(UITableViewCell.self,
-                       forCellReuseIdentifier: String(describing: UITableViewCell.self))
+    tableView.register(SWCharacterDetailCell.self,
+                       forCellReuseIdentifier: String(describing: SWCharacterDetailCell.self))
     return tableView
   }()
 
@@ -69,13 +61,14 @@ extension SWCharacterDetailViewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return details.count
+    return character.details.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self), for: indexPath)
-    let detail = details[indexPath.row]
-    cell.textLabel?.text = detail.key + " - " + detail.value
+    let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SWCharacterDetailCell.self), for: indexPath)
+    let detail = character.details[indexPath.row]
+    cell.textLabel?.text = detail.key
+    cell.detailTextLabel?.text = detail.value
     return cell
   }
 
