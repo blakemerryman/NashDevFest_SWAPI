@@ -13,17 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
     applyTheme()
-    let rootViewController = SWCharacterViewController()
-    window?.rootViewController = UINavigationController(rootViewController: rootViewController)
-    window?.makeKeyAndVisible()
+    setupRootViewController()
     return true
   }
 
-  /*:
+  /// Helper function that sets up the root view controller inside of a navigation controller.
+  private func setupRootViewController() {
+    let rootViewController = SWCharacterViewController()
+    window?.rootViewController = UINavigationController(rootViewController: rootViewController)
+    window?.makeKeyAndVisible()
+  }
+
+  /*!
    Helper function to apply a basic theme to the views.
    Specials thanks to @samcorder (Twitter) for this great helper function!
    */
@@ -42,6 +45,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UILabel.appearance().textColor = .white
   }
 
-
 }
-
